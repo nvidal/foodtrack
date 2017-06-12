@@ -7,6 +7,7 @@ REST API
 [POST http://localhost:3000/api/trucks]
 > Add a new truck to db. (day is number 1 (Sunday) and 7 (Saturday))
 Body example:
+
 { 
 	"name": "Truck Name",
     "description": "A funny description",
@@ -46,6 +47,7 @@ Body example:
 [POST http://localhost:3000/api/events]
 > Add a new event for the truck idTruck to db.
 Body example:
+
 {
     "idTruck" : "593e91758d07370f1de206cb",
     "description": "",
