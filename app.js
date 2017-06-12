@@ -9,7 +9,9 @@ var mongoose = require('mongoose')
 var app = express();
 
 // connect to mongodb
-mongoose.connect('mongodb://localhost/foodtrack');
+//mongodb://<dbuser>:<dbpassword>@ds121622.mlab.com:21622/heroku_0mfv8ttn
+mongoose.connect('mongodb://nacho:nacho@ds121622.mlab.com:21622/heroku_0mfv8ttn');
+//mongoose.connect('mongodb://localhost/foodtrack');
 mongoose.Promise = global.Promise;
 
 // view engine setup
