@@ -1,16 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
-const GeoSchema = new Schema({
-    type: {
-        type: String,
-        default: 'Point'
-    },
-    coordinates: {
-        type: [Number],
-        index: '2dsphere'
-    }
-});
+const GeoSchema = require('./geo');
+const HoursSchema = require('./hours');
 
 const TruckSchema = new Schema({
     name: {
@@ -20,9 +11,8 @@ const TruckSchema = new Schema({
     description: {
         type: String
     },
-    from : Date, 
-    until : Date,
-    place: GeoSchema
+    place: GeoSchema,
+    hours: [HoursSchema]
 });
 
 const Truck = mongoose.model('truck', TruckSchema);
