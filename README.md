@@ -32,8 +32,10 @@ Body example:
 
 [GET http://localhost:3000/api/trucks?lng=-35&lat=-55&max=10000]
 > Get the trucks near the position lng/lat with a max distance max
+
 [GET http://localhost:3000/api/trucks/593e91758d07370f1de206cb]
 > Get a truck
+
 [PUT http://localhost:3000/api/trucks/593e91758d07370f1de206cb]
 > Update a truck
 
