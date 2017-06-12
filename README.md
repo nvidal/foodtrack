@@ -2,7 +2,8 @@
 
 REST API
 
-TRUCK
+++++ TRUCK ++++
++++++++++++++++
 [POST http://localhost:3000/api/trucks]
 > Add a new truck to db. (day is number 1 (Sunday) and 7 (Saturday))
 Body example:
@@ -38,7 +39,19 @@ Body example:
 
 
 
->>>> EVENTS <<<<<
-[POST http://localhost:3000/api/trucks]
-> Add a new truck to db. (day is number 1 (Sunday) and 7 (Saturday))
+++++ EVENTS ++++
+++++++++++++++++
+[POST http://localhost:3000/api/events]
+> Add a new event for the truck idTruck to db.
 Body example:
+{
+    "idTruck" : "593e91758d07370f1de206cb",
+    "description": "",
+    "place":  { "type": "point", "coordinates" : [-35, -55] },
+    "date" : "2017-06-15",
+    "from" : "0900",
+    "until" : "1500"
+}
+
+[GET http://localhost:3000/api/events?lng=-35&lat=-55&max=10000]
+> Get the events near the position lng/lat with a max distance max
