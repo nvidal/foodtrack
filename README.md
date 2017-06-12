@@ -2,7 +2,7 @@
 
 REST API
 
->>>> TRUCKS <<<<<
+TRUCK
 [POST http://localhost:3000/api/trucks]
 > Add a new truck to db. (day is number 1 (Sunday) and 7 (Saturday))
 Body example:
