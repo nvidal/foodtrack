@@ -34,6 +34,11 @@ Body example:
 [GET http://localhost:3000/api/trucks?lng=-35&lat=-55&max=10000]
 > Get the trucks near the position lng/lat with a max distance max
 
+*** NEW ***
+[GET http://localhost:3000/api/trucks/within?bl_lng=-34&bl_lat=-55&ur_lng=33&ur_lat=53]
+> Get the trucks within the box [[bl_lng,bl_lat], [ur_lng, ur_lat]]
+
+
 [GET http://localhost:3000/api/trucks/593e91758d07370f1de206cb]
 > Get a truck
 
@@ -59,3 +64,7 @@ Body example:
 
 [GET http://localhost:3000/api/events?lng=-35&lat=-55&max=10000]
 > Get the events near the position lng/lat with a max distance max
+
+*** NEW ***
+[GET http://localhost:3000/api/events/within?bl_lng=-34&bl_lat=-55&ur_lng=33&ur_lat=53]
+> Get the events within the box [[bl_lng,bl_lat], [ur_lng, ur_lat]]

@@ -19,6 +19,22 @@ router.get('/trucks', function(req, res, next){
     }).catch(next);
 });
 
+// get the list of trucks from the db
+router.get('/trucks/within', function(req, res, next){
+	//specify longitude first.
+	var bl_lng = req.query.bl_lng || config.bl_lng_default;
+	var bl_lat = req.query.bl_lat || config.bl_lat_default;
+	var ur_lng = req.query.ur_lng || config.ur_lng_default;
+	var ur_lat = req.query.ur_lat || config.ur_lat_default;
+
+	Truck.where('place.coordinates')
+	.within({ box: [
+		[parseFloat(bl_lng), parseFloat(bl_lat)], [parseFloat(ur_lng), parseFloat(ur_lat)]] })
+	.then(function(trucks){
+        res.send(trucks);
+    }).catch(next);
+});
+
 // add new truck to the db
 router.post('/trucks', function(req, res, next){
     Truck.create(req.body).then(function(truck){
@@ -64,7 +80,7 @@ router.post('/events', function(req, res, next){
 	}).catch(next);
 });
 
-// get the list of trucks from the db
+// get the list of events from the db
 router.get('/events', function(req, res, next){
 	var lng = req.query.lng || config.lng_default;
 	var lat = req.query.lat || config.lat_default;
@@ -74,6 +90,22 @@ router.get('/events', function(req, res, next){
         {type: 'Point', coordinates: [parseFloat(lng), parseFloat(lat)]},
         {maxDistance: parseInt(max), spherical: true}
     ).then(function(events){
+        res.send(events);
+    }).catch(next);
+});
+
+// get the list of events from the db
+router.get('/events/within', function(req, res, next){
+	//specify longitude first.
+	var bl_lng = req.query.bl_lng || config.bl_lng_default;
+	var bl_lat = req.query.bl_lat || config.bl_lat_default;
+	var ur_lng = req.query.ur_lng || config.ur_lng_default;
+	var ur_lat = req.query.ur_lat || config.ur_lat_default;
+
+	Event.where('place.coordinates')
+	.within({ box: [
+		[parseFloat(bl_lng), parseFloat(bl_lat)], [parseFloat(ur_lng), parseFloat(ur_lat)]] })
+	.then(function(events){
         res.send(events);
     }).catch(next);
 });
