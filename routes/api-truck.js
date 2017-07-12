@@ -3,6 +3,7 @@ const router = express.Router();
 const Truck = require('../models/truck');
 const Event = require('../models/event');
 const config = require('../config');
+const Feature = require('../models/feature');
 
 
 // get the list of trucks from the db
@@ -31,7 +32,23 @@ router.get('/trucks/within', function(req, res, next){
 	.within({ box: [
 		[parseFloat(bl_lng), parseFloat(bl_lat)], [parseFloat(ur_lng), parseFloat(ur_lat)]] })
 	.then(function(trucks){
-        res.send(trucks);
+		//console.log(trucks);
+		var list = [];
+		for( var i = 0; i< trucks.length; i++){
+			//console.log(trucks[i]);
+			list.push({
+					type : 'Feature',
+					geometry : trucks[i].place,
+					properties : {
+						truck : trucks[i]
+					}
+				});
+		};
+		const result = {
+			type : 'FeatureCollection',
+			features : list,
+		};
+        res.send(result);
     }).catch(next);
 });
 
